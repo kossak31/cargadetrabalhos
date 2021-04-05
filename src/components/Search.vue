@@ -98,4 +98,7 @@ export default {
 
 
 <style scoped>
+body{ 
+  background-color:grey;
+}
 </style>

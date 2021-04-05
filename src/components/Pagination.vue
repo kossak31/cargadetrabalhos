@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="my-4">
+  <div class="container mb-5 pb-5">
+    <div class="my-4 col-lg-12 pt-5">
       <!-- Pagination -->
       <ul class="pagination pagination-md justify-content-center text-center">
         <li class="page-item">
@@ -75,4 +75,21 @@ a {
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
+
+.container{
+  background-color: #f3f3f3;
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+body{ 
+  background-color:grey;
+} 
+
+.page-link {
+  color:black!important;
+  font-weight: bolder;
+}
+
 </style>
