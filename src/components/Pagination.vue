@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import trabalinhos from "./json/titles.json";
+import trabalinhos from "@/json/titles.json";
 
 export default {
   data() {

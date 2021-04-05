@@ -1,36 +1,23 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">cargadetrabalhos.website</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <div>
+    <b-navbar toggleable="lg" type="dark" variant="info">
+      <b-navbar-brand href="#">cargadetrabalhos.website</b-navbar-brand>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#"
-            >Inicio <span class="sr-only">(current)</span></a
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <router-link to="/#" active-class="active" class="nav-link">Inicio</router-link>
+          <router-link to="/procurar" active-class="active" class="nav-link"
+            >Procurar</router-link
           >
-        </li>
-
-        <li class="nav-item">
-          <router-link to="/procurar">Procurar</router-link>
-        </li>
-
-        <li class="nav-item">
-          <router-link to="/contacto">Contacto</router-link>
-        </li>
-      </ul>
-    </div>
-  </nav>
+          <router-link to="/contacto" active-class="active" class="nav-link"
+            >Contacto</router-link
+          >
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+  </div>
 </template>
 
 <script>
