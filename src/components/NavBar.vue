@@ -1,7 +1,7 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">cargadetrabalhos.website</b-navbar-brand>
+    <b-navbar toggleable="lg" type="dark" variant="dark">
+      <b-navbar-brand href="#" class="brand">cargadetrabalhos.website</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -24,5 +24,12 @@
 export default {};
 </script>
 
-<style>
+<style v-if="true">
+body{ 
+  background-color:grey;
+}
+
+.brand{
+  font-weight:bolder;
+}
 </style>
