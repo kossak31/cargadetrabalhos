@@ -1,5 +1,5 @@
 <template>
-  <div class="container mb-5 pb-5">
+  <div class="container mb-5 pb-5 col-lg-6">
     <div class="my-4 col-lg-12 pt-5">
       <!-- Pagination -->
       <ul class="pagination pagination-md justify-content-center text-center">
