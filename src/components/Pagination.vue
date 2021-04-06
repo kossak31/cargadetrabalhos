@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <div class="container mb-5 pb-5">
-      <div class="my-4 col-lg-12 pt-5">
-        <!-- Pagination -->
-        <ul class="pagination pagination-md justify-content-center text-center">
-          <li class="page-item">
-            <a class="page-link" @click="prev()">Anterior</a>
+  <div class="container mb-5 pb-5 col-lg-6">
+    <div class="my-4 col-lg-12 pt-5">
+      <!-- Pagination -->
+      <ul class="pagination pagination-md justify-content-center text-center">
+        <li class="page-item">
+          <a class="page-link" @click="prev()">Anterior</a>
           </li>
           <li class="page-link" style="background-color: inherit">
             {{ current }} de {{ trabalinhos.length }}
@@ -15,8 +14,8 @@
           </li>
         </ul>
         <!-- Pagination -->
-      </div>
 
+      </div>
       <ul>
         <li v-for="(item, i) in paginated" :key="i + item.title">
           {{ item.title }}
@@ -104,9 +103,9 @@ a {
   border-radius: 10px;
 }
 
-body {
-  background-color: grey;
-}
+body{ 
+  background-color:grey;
+} 
 
 .page-link {
   color: black !important;

@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <b-navbar toggleable="lg" type="dark" variant="dark">
-      <b-navbar-brand href="#" class="brand">cargadetrabalhos.website</b-navbar-brand>
+  <div class="bg-dark2">
+    <b-navbar toggleable="lg" type="dark"  variant="dark">
+      <b-navbar-brand href="#" class="brand"><img class="mr-3" width="75" height="75" src="../assets/logo.png">carga de trabalhos </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -26,10 +26,39 @@ export default {};
 
 <style v-if="true">
 body{ 
-  background-color:grey;
+  background-color:#E6E6FA!important;
 }
 
 .brand{
   font-weight:bolder;
+}
+
+.bg-dark2 nav{
+  background-color:#4a6075!important;
+}
+
+.navbar-brand {
+  font-size: 1.6rem!important;
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+html, body {
+  font-family: 'Varela Round', sans-serif;
+}
+
+#app {
+  font-family: 'Varela Round', sans-serif;
+}
+
+@media (min-width: 992px)
+{
+.navbar-expand-lg .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+    justify-content: flex-end!important;
+}
 }
 </style>
