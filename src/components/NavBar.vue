@@ -51,4 +51,13 @@ html, body {
 #app {
   font-family: 'Varela Round', sans-serif;
 }
+
+@media (min-width: 992px)
+{
+.navbar-expand-lg .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+    justify-content: flex-end!important;
+}
+}
 </style>
