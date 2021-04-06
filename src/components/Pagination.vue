@@ -83,9 +83,6 @@ a {
   border-radius: 10px;
 }
 
-body{ 
-  background-color:grey;
-} 
 
 .page-link {
   color:black!important;

@@ -26,7 +26,7 @@ export default {};
 
 <style v-if="true">
 body{ 
-  background-color:grey;
+  background-color:#E6E6FA!important;
 }
 
 .brand{
