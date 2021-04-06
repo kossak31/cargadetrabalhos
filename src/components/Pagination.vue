@@ -1,38 +1,40 @@
 <template>
-  <div class="container mb-5 pb-5">
-    <div class="my-4 col-lg-12 pt-5">
-      <!-- Pagination -->
-      <ul class="pagination pagination-md justify-content-center text-center">
-        <li class="page-item">
-          <a class="page-link" @click="prev()">Anterior</a>
-        </li>
-        <li class="page-link" style="background-color: inherit">
-          {{ current }} de {{ trabalinhos.length }}
-        </li>
-        <li class="page-item">
-          <a class="page-link" @click="next()">Seguinte</a>
+  <div>
+    <div class="container mb-5 pb-5">
+      <div class="my-4 col-lg-12 pt-5">
+        <!-- Pagination -->
+        <ul class="pagination pagination-md justify-content-center text-center">
+          <li class="page-item">
+            <a class="page-link" @click="prev()">Anterior</a>
+          </li>
+          <li class="page-link" style="background-color: inherit">
+            {{ current }} de {{ trabalinhos.length }}
+          </li>
+          <li class="page-item">
+            <a class="page-link" @click="next()">Seguinte</a>
+          </li>
+        </ul>
+        <!-- Pagination -->
+      </div>
+
+      <ul>
+        <li v-for="(item, i) in paginated" :key="i + item.title">
+          {{ item.title }}
         </li>
       </ul>
-      <!-- Pagination -->
     </div>
-
-    <ul>
-      <li v-for="(item, i) in paginated" :key="i + item.title">
-        {{ item.title }}
-      </li>
-    </ul>
   </div>
 </template>
 
 <script>
+//get json file
 import trabalinhos from "@/json/titles.json";
 
 export default {
   data() {
     return {
       trabalinhos,
-      total: "",
-      current: 1,
+      current: localStorage.getItem("countstore"),
       pageSize: 10,
     };
   },
@@ -52,13 +54,32 @@ export default {
   methods: {
     prev() {
       if (this.current === 1) return; //block -1 and 0
-      this.current--;
+      localStorage.setItem("countstore", --this.current);
     },
     next() {
-      this.current++;
+      localStorage.setItem("countstore", ++this.current);
     },
   },
+  created() {
+    // //local storage for pagination numbers  
+    // if (!localStorage.getItem("countstore")) {
+    //   localStorage.setItem("countstore", 1);
+    //   console.log("criou storage" + localStorage.getItem("countstore"));
+    // } else {
+    //   localStorage.setItem("countstore", this.current);
+    //   console.log("ja existe storage nº " + localStorage.getItem("countstore"));
+    // }
+  },
 };
+
+//local storage for pagination numbers  
+    if (!localStorage.getItem("countstore")) {
+      localStorage.setItem("countstore", 1);
+      console.log("criou storage" + localStorage.getItem("countstore"));
+    } else {
+      localStorage.setItem("countstore", 1);
+      console.log("ja existe storage nº " + localStorage.getItem("countstore"));
+    }
 </script>
 
 <style>
@@ -76,20 +97,19 @@ a {
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
-.container{
+.container {
   background-color: #f3f3f3;
-   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 10px;
 }
 
-body{ 
-  background-color:grey;
-} 
-
-.page-link {
-  color:black!important;
-  font-weight: bolder;
+body {
+  background-color: grey;
 }
 
+.page-link {
+  color: black !important;
+  font-weight: bolder;
+}
 </style>

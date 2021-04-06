@@ -1,39 +1,46 @@
 <template>
   <div>
-    <b-form id="loginForm">
+    <b-form class="mt-5 col-6 offset-3" id="loginForm">
       <b-form-group
         id="input-group-1"
-        label="Email address:"
-        label-for="input-1"
-        description="We'll never share your email with anyone else."
+        label="Endereço de E-mail:"
+        label-for="email"
+        description="Nunca compartilharemos seu e-mail com mais ninguém."
       >
         <b-form-input
-          id="input-1"
+          id="email"
           v-model="user.email"
           type="email"
-          placeholder="Enter email"
-          required
+          placeholder="Indica o teu email"
+          required          
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
+      <b-form-group id="input-group-2" label="Nome:" label-for="name">
         <b-form-input
-          id="input-2"
+          id="name"
           v-model="user.name"
-          placeholder="Enter name"
-          required
+          placeholder="Indica o teu nome"          
         ></b-form-input>
       </b-form-group>
+
 
       <b-form-textarea
-        id="textarea"
+        id="message"
         v-model="user.message"
-        placeholder="Enter something..."
+        placeholder="Escreve aqui uma mensagem..."
         rows="3"
         max-rows="6"
+        required
       ></b-form-textarea>
 
-      <b-button @click="salvar" type="submit" variant="primary"
+      <br />
+
+      <b-button
+        @click="salvar"
+        type="submit"
+        variant="primary"
+        class="btn btn-lg btn-block"
         >Submit</b-button
       >
     </b-form>
@@ -47,8 +54,8 @@ export default {
   data() {
     return {
       user: {
-        name: "peter",
-        email: "foo@example.com",
+        name: "",
+        email: "",
         message: "",
       },
     };
@@ -68,7 +75,7 @@ export default {
 
 
 <style scoped>
-body{ 
-  background-color:grey;
+body {
+  background-color: grey;
 }
 </style>
