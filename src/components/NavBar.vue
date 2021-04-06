@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <b-navbar toggleable="lg" type="dark" variant="dark">
+  <div class="bg-dark2">
+    <b-navbar toggleable="lg" type="dark"  variant="dark">
       <b-navbar-brand href="#" class="brand"><img class="mr-3" width="75" height="75" src="../assets/logo.png">carga de trabalhos </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -33,8 +33,8 @@ body{
   font-weight:bolder;
 }
 
-.bg-dark{
-  background-color:#425d77!important;
+.bg-dark2 nav{
+  background-color:#4a6075!important;
 }
 
 .navbar-brand {
