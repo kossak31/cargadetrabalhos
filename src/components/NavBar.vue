@@ -37,6 +37,10 @@ body{
   background-color:#425d77!important;
 }
 
+.navbar-brand {
+  font-size: 2.25rem!important;
+}
+
 
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
