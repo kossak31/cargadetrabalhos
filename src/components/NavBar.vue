@@ -32,4 +32,19 @@ body{
 .brand{
   font-weight:bolder;
 }
+
+.bg-dark{
+  background-color:#425d77!important;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+html, body {
+  font-family: 'Varela Round', sans-serif;
+}
+
+#app {
+  font-family: 'Varela Round', sans-serif;
+}
 </style>
