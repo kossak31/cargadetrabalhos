@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" variant="dark">
-      <b-navbar-brand href="#" class="brand">cargadetrabalhos.website</b-navbar-brand>
+      <b-navbar-brand href="#" class="brand"><img class="mr-3" width="75" height="75" src="../assets/logo.png">carga de trabalhos </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
