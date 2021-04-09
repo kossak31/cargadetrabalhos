@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-form class="mt-5 col-6 offset-3" id="loginForm">
+    <b-form class="mt-5 pt-5 col-lg-6 m-auto" @submit.prevent="send">
       <b-form-group
         id="input-group-1"
         label="Endereço de E-mail:"
@@ -12,18 +12,17 @@
           v-model="user.email"
           type="email"
           placeholder="Indica o teu email"
-          required          
+          required
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="input-group-2" label="Nome:" label-for="name">
+      <b-form-group >
         <b-form-input
           id="name"
           v-model="user.name"
-          placeholder="Indica o teu nome"          
+          placeholder="Indica o teu nome"
         ></b-form-input>
       </b-form-group>
-
 
       <b-form-textarea
         id="message"
@@ -37,11 +36,10 @@
       <br />
 
       <b-button
-        @click="salvar"
         type="submit"
-        variant="primary"
-        class="btn btn-lg btn-block"
-        >Submit</b-button
+        variant="success"
+        class="btn btn-lg btn-block btn-custom"
+        >Enviar</b-button
       >
     </b-form>
   </div>
@@ -61,8 +59,12 @@ export default {
     };
   },
   methods: {
-    salvar: function () {
-      let formData = new FormData(document.getElementById("loginForm"));
+    send: function () {
+      let formData = new FormData();
+      formData.append("name", this.user.name);
+      formData.append("email", this.user.email);
+      formData.append("message", this.user.message);
+
       this.$http
         .post("http://link.cursolinux.pt:8080/contacts", formData)
         .then((response) => {
@@ -75,4 +77,13 @@ export default {
 
 
 <style scoped>
+.m-auto {
+  margin: 0 auto;
+}
+
+.btn-custom {
+  color: #fff !important;
+  background-color: #58864c !important;
+  border: 0 !important;
+}
 </style>

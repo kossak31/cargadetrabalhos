@@ -1,10 +1,37 @@
 <template>
-  <div class="container mb-5 pb-5 col-lg-6">
-    <div class="my-4 col-lg-12 pt-5">
-      <!-- Pagination -->
-      <ul class="pagination pagination-md justify-content-center text-center">
-        <li class="page-item">
-          <a class="page-link" @click="prev()">Anterior</a>
+  <div>
+    <div class="page">
+      <div class="container mb-5 pb-5 col-lg-8">
+        <div class="my-4 col-lg-12 pt-5">
+          <!-- header Pagination -->
+          <ul
+            class="pagination pagination-lg justify-content-center text-center"
+          >
+            <li class="page-item">
+              <a class="page-link" @click="prev()">Anterior</a>
+            </li>
+            <li class="page-link" style="background-color: inherit">
+              {{ current }} de {{ trabalinhos.length }}
+            </li>
+            <li class="page-item">
+              <a class="page-link" @click="next()">Seguinte</a>
+            </li>
+          </ul>
+          <!-- Pagination -->
+        </div>
+        <div v-for="(item, i) in paginated" :key="i + item.title">
+          <h4 v-html="item.title"></h4>
+          <b class="float-right">inserido em: {{ item.date }}</b>
+          <br />
+          <p class="float-right">categoria: {{ item.categories }}</p>
+          <br>
+          <hr />
+        </div>
+
+        <!-- footer Pagination -->
+        <ul class="pagination pagination-lg justify-content-center text-center">
+          <li class="page-item">
+            <a class="page-link" @click="prev()">Anterior</a>
           </li>
           <li class="page-link" style="background-color: inherit">
             {{ current }} de {{ trabalinhos.length }}
@@ -14,26 +41,20 @@
           </li>
         </ul>
         <!-- Pagination -->
-
       </div>
-      <ul>
-        <li v-for="(item, i) in paginated" :key="i + item.title">
-          {{ item.title }}
-        </li>
-      </ul>
     </div>
   </div>
 </template>
 
 <script>
 //get json file
-import trabalinhos from "@/json/titles.json";
+import trabalinhos from "../json/titles.json";
 
 export default {
   data() {
     return {
       trabalinhos,
-      current: localStorage.getItem("countstore"),
+      current: localStorage.getItem("storagePage"),
       pageSize: 10,
     };
   },
@@ -49,36 +70,32 @@ export default {
       return this.trabalinhos.slice(this.indexStart, this.indexEnd);
     },
   },
-
   methods: {
     prev() {
       if (this.current === 1) return; //block -1 and 0
-      localStorage.setItem("countstore", --this.current);
+      localStorage.setItem("storagePage", --this.current);
     },
     next() {
-      localStorage.setItem("countstore", ++this.current);
+      localStorage.setItem("storagePage", ++this.current);
     },
   },
-  created() {
-    // //local storage for pagination numbers  
-    // if (!localStorage.getItem("countstore")) {
-    //   localStorage.setItem("countstore", 1);
-    //   console.log("criou storage" + localStorage.getItem("countstore"));
-    // } else {
-    //   localStorage.setItem("countstore", this.current);
-    //   console.log("ja existe storage nº " + localStorage.getItem("countstore"));
-    // }
+  beforeCreate() {
+    //create local storage to 1 for pagination numbers
+    if (!localStorage.getItem("storagePage")) {
+      localStorage.setItem("storagePage", 1);
+      console.log("criou storage" + localStorage.getItem("storagePage"));
+    }
+  },
+  updated() {
+    //update local storage
+    if (localStorage.getItem("storagePage")) {
+      localStorage.setItem("storagePage", this.current);
+      console.log(
+        "ja existe storage nº " + localStorage.getItem("storagePage")
+      );
+    }
   },
 };
-
-//local storage for pagination numbers  
-    if (!localStorage.getItem("countstore")) {
-      localStorage.setItem("countstore", 1);
-      console.log("criou storage" + localStorage.getItem("countstore"));
-    } else {
-      localStorage.setItem("countstore", 1);
-      console.log("ja existe storage nº " + localStorage.getItem("countstore"));
-    }
 </script>
 
 <style>
@@ -103,9 +120,15 @@ a {
   border-radius: 10px;
 }
 
-body{ 
-  background-color:grey;
-} 
+body {
+  background-color: grey;
+}
+
+.page a {
+  color: #4a627b !important;
+  text-decoration: none;
+  background-color: transparent;
+}
 
 .page-link {
   color: black !important;

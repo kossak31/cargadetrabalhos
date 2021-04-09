@@ -1,13 +1,16 @@
 <template>
   <div class="bg-dark2">
     <b-navbar toggleable="lg" type="dark"  variant="dark">
-      <b-navbar-brand href="#" class="brand"><img class="mr-3" width="75" height="75" src="../assets/logo.png">carga de trabalhos </b-navbar-brand>
+      <b-navbar-brand href="#" class="brand">
+        <img class="mr-3 rsp-img" width="55" height="55" src="../assets/logo.png">
+        <span class="rsp">carga de STRESSES</span></b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <router-link to="/#" active-class="active" class="nav-link">Inicio</router-link>
+           <router-link to="/termos-e-condicoes" active-class="active" class="nav-link">Termos & Condições</router-link>
           <router-link to="/procurar" active-class="active" class="nav-link"
             >Procurar</router-link
           >
@@ -24,7 +27,7 @@
 export default {};
 </script>
 
-<style v-if="true">
+<style>
 body{ 
   background-color:#E6E6FA!important;
 }
@@ -61,4 +64,27 @@ html, body {
     justify-content: flex-end!important;
 }
 }
+
+
+@media (max-width:700px)
+{
+.rsp  {
+  font-size: 1.3rem!important;
+    }
+}
+
+@media (max-width:400px)
+{
+.rsp  {
+  font-size: 1.1rem!important;
+    }
+}
+
+@media (max-width:400px)
+{
+.rsp-img {
+  display:none;
+    }
+}
+
 </style>
