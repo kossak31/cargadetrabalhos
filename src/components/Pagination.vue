@@ -5,13 +5,13 @@
         <div class="my-4 col-lg-12 pt-5">
           <!-- header Pagination -->
           <ul
-            class="pagination pagination-lg justify-content-center text-center"
+            class="pagination pagination-md justify-content-center text-center"
           >
             <li class="page-item">
               <a class="page-link" @click="prev()">Anterior</a>
             </li>
             <li class="page-link" style="background-color: inherit">
-              {{ current }} de {{ trabalinhos.length }}
+              {{ current }} de {{ endOfPagination() }}
             </li>
             <li class="page-item">
               <a class="page-link" @click="next()">Seguinte</a>
@@ -24,17 +24,17 @@
           <b class="float-right">inserido em: {{ item.date }}</b>
           <br />
           <p class="float-right">categoria: {{ item.categories }}</p>
-          <br>
+          <br />
           <hr />
         </div>
 
         <!-- footer Pagination -->
-        <ul class="pagination pagination-lg justify-content-center text-center">
+        <ul class="pagination pagination-md justify-content-center text-center">
           <li class="page-item">
             <a class="page-link" @click="prev()">Anterior</a>
           </li>
           <li class="page-link" style="background-color: inherit">
-            {{ current }} de {{ trabalinhos.length }}
+            {{ current }} de {{ endOfPagination() }}
           </li>
           <li class="page-item">
             <a class="page-link" @click="next()">Seguinte</a>
@@ -49,7 +49,7 @@
 <script>
 //get json file
 import trabalinhos from "../json/titles.json";
-
+//import axios from "axios";
 export default {
   data() {
     return {
@@ -76,9 +76,25 @@ export default {
       localStorage.setItem("storagePage", --this.current);
     },
     next() {
+      if (this.current === this.endOfPagination() ) return //block total records
       localStorage.setItem("storagePage", ++this.current);
     },
+    endOfPagination(){ 
+      return Math.ceil(trabalinhos.length / this.pageSize);
+    }
   },
+
+  // mounted() {
+  //   axios //how to get json from axios
+  //     .get("http://URL.tld/titles")
+  //     .then((response) => {
+  //       this.trabalinhos = response.data;
+  //       console.log(response.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // },
   beforeCreate() {
     //create local storage to 1 for pagination numbers
     if (!localStorage.getItem("storagePage")) {
