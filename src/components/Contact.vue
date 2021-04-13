@@ -16,7 +16,7 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group >
+      <b-form-group>
         <b-form-input
           id="name"
           v-model="user.name"
@@ -66,10 +66,16 @@ export default {
       formData.append("message", this.user.message);
 
       this.$http
-        .post("http://link.cursolinux.pt:8080/contacts", formData)
+        .post("https://link.cursolinux.pt:8080/contacts", formData)
         .then((response) => {
-          console.log(response.body);
+          console.log(response.data);
+          this.onReset();
         });
+    },
+    onReset() {
+      this.user.name = "";
+      this.user.email = "";
+      this.user.message = "";
     },
   },
 };
