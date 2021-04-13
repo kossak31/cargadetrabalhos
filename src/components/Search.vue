@@ -148,13 +148,6 @@ export default {
       searchText: "",
     };
   },
-  methods: {
-    showAlert() {
-      // Use sweetalert2
-      this.$swal("VER E-MAILS");
-    },
-  },
-
   computed: {
     orderTrabalhos: function () {
       return _.orderBy(this.trabalhos);
@@ -180,7 +173,7 @@ export default {
     },
   },
   created() {
-    this.showAlert();
+    alert('VER EMAILS');
   },
 };
 </script>

@@ -23,16 +23,6 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
-//sweetalert2
-import VueSweetalert2 from 'vue-sweetalert2';
-
-// If you don't need the styles, do not connect
-import 'sweetalert2/dist/sweetalert2.min.css';
-
-Vue.use(VueSweetalert2);
-
-
-
 new Vue({
   router,
   render: h => h(App),
