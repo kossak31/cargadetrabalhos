@@ -23,6 +23,17 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
+//fontawesome
+import { library } from '@fortawesome/fontawesome-svg-core' 
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faSpinner)
+Vue.component('icons', FontAwesomeIcon)
+
+
+
+
 new Vue({
   router,
   render: h => h(App),

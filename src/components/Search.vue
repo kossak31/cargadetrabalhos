@@ -81,8 +81,13 @@
             class="form-control"
             placeholder="Procurar por..."
           />
+          <br /><br />
+          <div v-if="loading == true" class="d-flex justify-content-center">
+            <icons :icon="['fas', 'spinner']" class="fa-2x fa-spinner" />
+          </div>
         </div>
       </div>
+
       <div class="my-5 col-12 page">
         <div v-for="(item, i) in filterMembers" :key="i + item.desc">
           <span v-html="item.desc"></span>
@@ -95,14 +100,15 @@
 
 <script>
 import _ from "lodash";
-import trabalinhos from "../json/jobs.json";
+//import trabalinhos from "../json/jobs.json";
+import axios from "axios";
 
 export default {
   name: "Search",
   components: {},
   data() {
     return {
-      trabalinhos,
+      trabalinhos: [],
       categorias: [
         "arte-final + paginação",
         "audiovisual",
@@ -146,6 +152,7 @@ export default {
       searchTipoTrabalho: "",
       searchLocalidade: "",
       searchText: "",
+      loading: true,
     };
   },
   computed: {
@@ -172,8 +179,28 @@ export default {
       );
     },
   },
+  mounted() {
+    this.fetchData();
+  },
   created() {
-    alert('VER EMAILS');
+    alert("VER EMAILS");
+  },
+  methods: {
+    fetchData() {
+      this.loading = true;
+      axios //how to get json from axios
+        .get("http://link.cursolinux.pt:8080/jobs")
+        .then((response) => {
+          this.trabalinhos = response.data;
+          //console.log(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          this.loading = false;
+        });
+    },
   },
 };
 </script>
@@ -188,5 +215,14 @@ export default {
   color: #4a627b !important;
   text-decoration: none;
   background-color: transparent;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.fa-spinner {
+  animation: spinner 1s linear infinite;
 }
 </style>
